@@ -11,7 +11,7 @@ def air_density(altitude):
     https://www.grc.nasa.gov/www/k-12/airplane/atmosmet.html"""
     
     if altitude < 0:
-        raise ValueError("Altitude must be at least 0!")
+        altitude = 0
     if altitude >= 25000:
         T = -131.21 + (.00299 * altitude)
         p_pressure = 2.488 * (((T + 273.1)/216.6) ** (-11.388))
