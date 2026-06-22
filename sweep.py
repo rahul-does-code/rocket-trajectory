@@ -24,3 +24,9 @@ def sweep_angles(angles, v0, mass, Cd, A, dt=0.1):
 
     swept = pd.DataFrame(sweeper)
     return swept
+
+if __name__ == "__main__":
+    angles = np.linspace(5, 85, 81)
+    results = sweep_angles(angles, v0=100, mass=10, Cd=0.5, A=0.1)
+    results.to_csv("data/sweep_results.csv", index=False)
+    print(results)
