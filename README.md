@@ -2,16 +2,16 @@
 
 **Research Question: "Can an MLP extrapolate to launch angles beyond its training range?"**
 
+### Method
+Created a physics engine that simulates trajectories using a 4th-order Runge-Kutta method, sweeping angles from 5-85˚ for altitude + landing values.
+The values were used on a 1→64→64→2 feedforward ReLU network, trained with Adam (lr 1e-3, MSE loss, 500 epochs). The angles 5-74˚ (70 points) were used for training, and 
+the model was tested on held-out angles 75-85˚ (11 points).
+
 ### TL;DR 
 On altitude (a mild curve over 75-85°) the MLP extrapolates way better than the linear or quadratic baselines.
 On landing (a quickly bending curve) the MLP lost to the quadratic baseline by quite a bit.
 Ultimately, the MLP extrapolates far better than any baseline on altitude but could not compete
 against a simple quadratic fit for predicting landing.
-
-### Method
-Created a physics engine that simulates trajectories using a 4th-order Runge-Kutta method, sweeping angles from 5-85˚ for altitude + landing values.
-The values were used on a 1→64→64→2 feedforward ReLU network, trained with Adam (lr 1e-3, MSE loss, 500 epochs). The angles 5-74˚ (70 points) were used for training, and 
-the model was tested on held-out angles 75-85˚ (11 points).
 
 ### Results
 Per-output test MSE on test angles 75°-85° (real units, m²).
